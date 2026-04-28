@@ -1,0 +1,1078 @@
+[4/28/2026 12:01 AM] J. F. Carpio: <!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peroche Business Intelligence Unit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* ─────────────────────────────────────────
+BRAND TOKENS  (from Peroche style guide)
+───────────────────────────────────────── */
+:root {
+–midnight:    #0B0B0D;
+–charcoal:    #121316;
+–warm-gold:   #C8A36B;
+–champagne:   #E7D3A8;
+–ember:       #C75A44;
+–rose-copper: #BB6A5D;
+–off-white:   #F0EBE1;
+–muted:       #6B6860;
+–dim:         #2E2D2B;
+–border:      rgba(200,163,107,0.18);
+–border-faint:rgba(200,163,107,0.07);
+–fd: ‘Playfair Display’, Georgia, serif;
+–fu: ‘Inter’, sans-serif;
+}
+
+/* ─────────────────────────────────────────
+RESET
+───────────────────────────────────────── */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+background:var(–midnight);
+color:var(–off-white);
+font-family:var(–fu);
+font-size:16px;
+line-height:1.6;
+overflow-x:hidden;
+-webkit-font-smoothing:antialiased;
+}
+
+/* Dotted grid — brand pattern language */
+body::before{
+content:’’;
+position:fixed;inset:0;
+background-image:radial-gradient(circle,rgba(200,163,107,0.13) 1px,transparent 1px);
+background-size:28px 28px;
+pointer-events:none;z-index:0;
+}
+
+/* Grain */
+body::after{
+content:’’;
+position:fixed;inset:0;
+background-image:url(“data:image/svg+xml,%3Csvg viewBox=‘0 0 400 400’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cfilter id=‘g’%3E%3CfeTurbulence type=‘fractalNoise’ baseFrequency=‘0.8’ numOctaves=‘4’ stitchTiles=‘stitch’/%3E%3C/filter%3E%3Crect width=‘100%25’ height=‘100%25’ filter=‘url(%23g)’/%3E%3C/svg%3E”);
+opacity:0.028;pointer-events:none;z-index:1;
+}
+
+nav,main,footer,section{position:relative;z-index:2}
+
+/* ─────────────────────────────────────────
+UTILITIES
+───────────────────────────────────────── */
+.label{
+font-family:var(–fu);
+font-size:0.6rem;
+font-weight:500;
+letter-spacing:0.35em;
+text-transform:uppercase;
+color:var(–warm-gold);
+}
+
+.rule-h{
+width:32px;height:1px;
+background:var(–warm-gold);
+display:inline-block;
+vertical-align:middle;
+}
+
+.section-pad{padding:80px 24px}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(22px)}
+to  {opacity:1;transform:translateY(0)}
+}
+@keyframes fadeIn{
+from{opacity:0}to{opacity:1}
+}
+@keyframes pulse{
+0%,100%{opacity:.35}
+50%{opacity:.7}
+}
+
+.reveal{
+opacity:0;transform:translateY(20px);
+transition:opacity .75s ease, transform .75s ease;
+}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:.1s}
+.reveal.d2{transition-delay:.2s}
+.reveal.d3{transition-delay:.3s}
+
+/* ─────────────────────────────────────────
+NAV
+───────────────────────────────────────── */
+nav{
+position:fixed;top:0;left:0;right:0;z-index:100;
+padding:18px 24px;
+display:flex;align-items:center;justify-content:space-between;
+background:linear-gradient(to bottom,rgba(11,11,13,.96) 0%,rgba(11,11,13,0) 100%);
+backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+
+.nav-brand{text-decoration:none;display:flex;flex-direction:column;gap:2px}
+
+.nav-wordmark{
+font-family:var(–fd);
+font-weight:500;
+font-size:1.15rem;
+letter-spacing:0.04em;
+color:var(–off-white);
+line-height:1;
+}
+
+.nav-unit{
+font-family:var(–fu);
+font-size:0.52rem;
+font-weight:500;
+letter-spacing:0.28em;
+text-transform:uppercase;
+color:var(–warm-gold);
+}
+
+.nav-cta{
+font-family:var(–fu);
+font-size:0.58rem;
+font-weight:500;
+letter-spacing:0.18em;
+text-transform:uppercase;
+color:var(–warm-gold);
+border:1px solid rgba(200,163,107,0.32);
+padding:9px 16px;
+text-decoration:none;
+transition:all .3s ease;
+}
+.nav-cta:hover{background:var(–warm-gold);color:var(–midnight)}
+
+/* ─────────────────────────────────────────
+HERO
+───────────────────────────────────────── */
+.hero{
+min-height:100svh;
+[4/28/2026 12:01 AM] J. F. Carpio: display:flex;flex-direction:column;
+justify-content:center;align-items:flex-start;
+padding:120px 24px 80px;
+position:relative;overflow:hidden;
+}
+
+.hero-glow{
+position:absolute;top:-5%;right:-15%;
+width:560px;height:560px;
+background:radial-gradient(ellipse,rgba(199,90,68,.11) 0%,rgba(200,163,107,.07) 38%,transparent 68%);
+pointer-events:none;
+}
+
+.hero-glow2{
+position:absolute;bottom:-10%;left:-10%;
+width:400px;height:400px;
+background:radial-gradient(ellipse,rgba(200,163,107,.06) 0%,transparent 60%);
+pointer-events:none;
+}
+
+.hero-eyebrow{
+display:flex;align-items:center;gap:12px;
+margin-bottom:28px;
+opacity:0;animation:fadeUp .9s ease forwards .1s;
+}
+
+.hero-title{
+font-family:var(–fd);
+font-weight:400;
+font-size:clamp(2.8rem,10.5vw,6.2rem);
+line-height:1.04;
+letter-spacing:-.02em;
+color:var(–off-white);
+max-width:800px;
+opacity:0;animation:fadeUp 1s ease forwards .3s;
+}
+
+.hero-title em{font-style:italic;color:var(–warm-gold)}
+.hero-title .heat{font-style:italic;color:var(–ember)}
+
+.hero-body{
+font-family:var(–fu);
+font-size:clamp(.8rem,2.1vw,.92rem);
+font-weight:300;
+color:var(–muted);
+max-width:440px;
+line-height:1.9;
+margin-top:24px;margin-bottom:48px;
+opacity:0;animation:fadeUp 1s ease forwards .5s;
+}
+
+.hero-actions{
+display:flex;flex-wrap:wrap;gap:16px;align-items:center;
+opacity:0;animation:fadeUp 1s ease forwards .7s;
+}
+
+.btn-primary{
+display:inline-flex;align-items:center;gap:10px;
+padding:14px 28px;
+background:var(–ember);
+color:var(–off-white);
+font-family:var(–fu);
+font-size:0.62rem;
+font-weight:500;
+letter-spacing:0.2em;
+text-transform:uppercase;
+text-decoration:none;
+border:1px solid var(–ember);
+transition:all .35s ease;
+position:relative;overflow:hidden;
+}
+.btn-primary::after{
+content:’’;
+position:absolute;inset:0;
+background:var(–warm-gold);
+transform:scaleX(0);transform-origin:left;
+transition:transform .35s ease;
+}
+.btn-primary:hover{color:var(–midnight);border-color:var(–warm-gold)}
+.btn-primary:hover::after{transform:scaleX(1)}
+.btn-primary span{position:relative;z-index:1}
+.btn-primary .arr{position:relative;z-index:1;font-size:.8em;opacity:.7}
+
+.btn-ghost{
+font-family:var(–fu);
+font-size:0.62rem;
+font-weight:400;
+letter-spacing:0.18em;
+text-transform:uppercase;
+color:var(–muted);
+text-decoration:none;
+border-bottom:1px solid var(–dim);
+padding-bottom:2px;
+transition:color .3s,border-color .3s;
+}
+.btn-ghost:hover{color:var(–warm-gold);border-color:var(–warm-gold)}
+
+.scroll-cue{
+position:absolute;bottom:32px;left:24px;
+display:flex;align-items:center;gap:10px;
+opacity:0;animation:fadeIn 1s ease forwards 1.4s;
+}
+.scroll-cue .line{
+width:1px;height:36px;
+background:linear-gradient(to bottom,transparent,var(–warm-gold));
+animation:pulse 2s ease-in-out infinite;
+}
+.scroll-cue .txt{
+font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;
+color:var(–dim);
+writing-mode:vertical-rl;
+}
+
+/* ─────────────────────────────────────────
+CENEFA DIVIDER
+───────────────────────────────────────── */
+.cenefa-wrap{
+width:100%;overflow:hidden;line-height:0;
+opacity:.3;
+}
+.cenefa-wrap svg{display:block;width:100%;height:24px}
+
+/* ─────────────────────────────────────────
+POSITIONING BAND
+───────────────────────────────────────── */
+.position-band{
+background:var(–charcoal);
+border-top:1px solid var(–border-faint);
+border-bottom:1px solid var(–border-faint);
+padding:56px 24px;
+}
+
+.position-inner{
+max-width:840px;margin:0 auto;
+display:grid;grid-template-columns:1fr;gap:40px;
+}
+
+@media(min-width:640px){
+.position-inner{grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+}
+
+.position-heading{
+font-family:var(–fd);
+font-weight:400;
+font-size:clamp(1.6rem,4.5vw,2.5rem);
+line-height:1.2;
+color:var(–off-white);
+}
+.position-heading em{font-style:italic;color:var(–warm-gold)}
+
+.position-body{
+font-size:.85rem;font-weight:300;
+color:var(–muted);line-height:1.9;
+}
+.position-body strong{color:var(–champagne);font-weight:400}
+
+/* ─────────────────────────────────────────
+SERVICES
+───────────────────────────────────────── */
+.services-section{padding:80px 24px}
+
+.services-section .section-header{
+[4/28/2026 12:01 AM] J. F. Carpio: max-width:900px;margin:0 auto 48px;
+display:flex;align-items:center;gap:16px;
+}
+.section-header-line{
+flex:1;height:1px;background:var(–border-faint);
+}
+
+.services-grid{
+max-width:900px;margin:0 auto;
+display:grid;grid-template-columns:1fr;
+gap:1px;
+background:var(–border-faint);
+border:1px solid var(–border-faint);
+}
+@media(min-width:640px){
+.services-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+.service-card{
+background:var(–midnight);
+padding:40px 28px 36px;
+position:relative;overflow:hidden;
+transition:background .3s ease;
+}
+
+/* Gold top reveal on hover */
+.service-card::before{
+content:’’;position:absolute;top:0;left:0;right:0;height:1px;
+background:linear-gradient(90deg,transparent,var(–warm-gold),transparent);
+transform:scaleX(0);transition:transform .5s ease;
+}
+.service-card:hover::before{transform:scaleX(1)}
+.service-card:hover{background:var(–charcoal)}
+
+.svc-num{
+font-family:var(–fd);
+font-size:.65rem;
+letter-spacing:.2em;
+color:var(–dim);
+margin-bottom:28px;
+}
+
+.svc-icon{
+width:28px;height:28px;
+margin-bottom:20px;
+color:var(–warm-gold);
+opacity:.75;
+transition:opacity .3s;
+}
+.service-card:hover .svc-icon{opacity:1}
+
+.svc-name{
+font-family:var(–fd);
+font-weight:400;
+font-size:1.25rem;
+color:var(–off-white);
+margin-bottom:12px;
+line-height:1.2;
+}
+
+.svc-desc{
+font-size:.8rem;
+font-weight:300;
+color:var(–muted);
+line-height:1.85;
+margin-bottom:24px;
+}
+
+.svc-tags{
+display:flex;flex-wrap:wrap;gap:6px;
+}
+.svc-tag{
+font-size:.55rem;
+letter-spacing:.15em;
+text-transform:uppercase;
+color:var(–warm-gold);
+border:1px solid rgba(200,163,107,.22);
+padding:4px 8px;
+font-weight:500;
+}
+
+/* ─────────────────────────────────────────
+KPI STRIP
+───────────────────────────────────────── */
+.kpi-strip{
+background:var(–charcoal);
+border-top:1px solid var(–border-faint);
+border-bottom:1px solid var(–border-faint);
+padding:56px 24px;
+}
+
+.kpi-inner{
+max-width:860px;margin:0 auto;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:32px;
+}
+@media(min-width:640px){
+.kpi-inner{grid-template-columns:repeat(4,1fr)}
+}
+
+.kpi-item{text-align:center}
+
+.kpi-value{
+font-family:var(–fd);
+font-weight:400;
+font-size:clamp(2rem,6vw,2.8rem);
+color:var(–warm-gold);
+line-height:1;
+margin-bottom:6px;
+}
+
+.kpi-label{
+font-size:.6rem;
+font-weight:500;
+letter-spacing:.22em;
+text-transform:uppercase;
+color:var(–muted);
+line-height:1.4;
+}
+
+.kpi-divider{
+width:1px;
+background:var(–border-faint);
+display:none;
+}
+@media(min-width:640px){.kpi-divider{display:block}}
+
+/* ─────────────────────────────────────────
+TESTIMONIAL
+───────────────────────────────────────── */
+.testimonial-section{
+padding:80px 24px;
+max-width:760px;margin:0 auto;
+}
+
+.testi-inner{
+background:var(–charcoal);
+border:1px solid var(–border-faint);
+padding:48px 32px 40px;
+position:relative;
+overflow:hidden;
+}
+
+/* Ember left accent bar */
+.testi-inner::before{
+content:’’;
+position:absolute;top:0;left:0;bottom:0;
+width:2px;
+background:linear-gradient(to bottom,var(–ember),var(–rose-copper));
+}
+
+.testi-qqmark{
+font-family:var(–fd);
+font-size:4rem;
+line-height:.6;
+color:var(–ember);
+opacity:.55;
+margin-bottom:28px;
+display:block;
+}
+
+.testi-quote{
+font-family:var(–fd);
+font-style:italic;
+font-weight:400;
+font-size:clamp(1.15rem,3.5vw,1.55rem);
+line-height:1.55;
+color:var(–off-white);
+margin-bottom:36px;
+}
+
+.testi-quote .highlight{
+color:var(–warm-gold);
+font-style:italic;
+}
+
+.testi-rule{
+width:28px;height:1px;
+background:var(–warm-gold);
+margin-bottom:16px;
+}
+
+.testi-name{
+font-family:var(–fu);
+font-size:.68rem;
+font-weight:600;
+letter-spacing:.18em;
+text-transform:uppercase;
+color:var(–champagne);
+margin-bottom:4px;
+}
+
+.testi-role{
+font-size:.7rem;
+font-weight:300;
+color:var(–muted);
+}
+
+/* ─────────────────────────────────────────
+BRAND VALUES
+───────────────────────────────────────── */
+.values-strip{
+padding:56px 24px;
+border-top:1px solid var(–border-faint);
+}
+
+.values-inner{
+max-width:900px;margin:0 auto;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:32px;
+}
+@media(min-width:640px){
+.values-inner{grid-template-columns:repeat(5,1fr)}
+}
+
+.value-item{
+[4/28/2026 12:01 AM] J. F. Carpio: display:flex;flex-direction:column;gap:10px;
+align-items:flex-start;
+}
+
+.value-icon{
+width:24px;height:24px;
+color:var(–warm-gold);
+opacity:.7;
+}
+
+.value-name{
+font-size:.58rem;
+font-weight:600;
+letter-spacing:.22em;
+text-transform:uppercase;
+color:var(–warm-gold);
+}
+
+.value-desc{
+font-size:.72rem;
+font-weight:300;
+color:var(–muted);
+line-height:1.7;
+}
+
+/* ─────────────────────────────────────────
+CTA BAND
+───────────────────────────────────────── */
+.cta-band{
+background:var(–ember);
+padding:72px 24px;
+text-align:center;
+position:relative;overflow:hidden;
+}
+
+.cta-band::before{
+content:’’;
+position:absolute;inset:0;
+background-image:radial-gradient(circle,rgba(255,255,255,.05) 1px,transparent 1px);
+background-size:24px 24px;
+}
+
+.cta-band-inner{position:relative;z-index:1}
+
+.cta-band h2{
+font-family:var(–fd);
+font-weight:400;
+font-size:clamp(1.8rem,5.5vw,3rem);
+line-height:1.15;
+color:var(–off-white);
+margin-bottom:16px;
+}
+
+.cta-band h2 em{
+font-style:italic;
+color:var(–champagne);
+}
+
+.cta-band p{
+font-size:.85rem;
+font-weight:300;
+color:rgba(240,235,225,.65);
+max-width:400px;
+margin:0 auto 40px;
+line-height:1.8;
+}
+
+.btn-light{
+display:inline-flex;align-items:center;gap:10px;
+padding:14px 30px;
+background:var(–off-white);
+color:var(–midnight);
+font-family:var(–fu);
+font-size:.62rem;
+font-weight:600;
+letter-spacing:.2em;
+text-transform:uppercase;
+text-decoration:none;
+border:1px solid var(–off-white);
+transition:all .3s ease;
+}
+.btn-light:hover{
+background:var(–midnight);
+color:var(–warm-gold);
+border-color:var(–midnight);
+}
+
+/* ─────────────────────────────────────────
+FOOTER
+───────────────────────────────────────── */
+footer{
+background:var(–charcoal);
+border-top:1px solid var(–border-faint);
+padding:56px 24px 36px;
+}
+
+.footer-top{
+max-width:900px;margin:0 auto;
+display:grid;grid-template-columns:1fr;gap:40px;
+padding-bottom:40px;
+border-bottom:1px solid var(–border-faint);
+margin-bottom:32px;
+}
+@media(min-width:640px){
+.footer-top{grid-template-columns:1fr 1fr 1fr}
+}
+
+.footer-brand{}
+
+.footer-wordmark{
+font-family:var(–fd);
+font-weight:500;
+font-size:1.3rem;
+letter-spacing:.04em;
+color:var(–off-white);
+margin-bottom:2px;
+line-height:1;
+}
+
+.footer-unit-label{
+font-size:.52rem;
+font-weight:500;
+letter-spacing:.28em;
+text-transform:uppercase;
+color:var(–warm-gold);
+margin-bottom:16px;
+}
+
+.footer-tagline{
+font-size:.7rem;
+font-weight:300;
+color:var(–muted);
+line-height:1.7;
+max-width:220px;
+}
+
+.footer-col-title{
+font-size:.58rem;
+font-weight:600;
+letter-spacing:.28em;
+text-transform:uppercase;
+color:var(–warm-gold);
+margin-bottom:16px;
+display:flex;align-items:center;gap:8px;
+}
+.footer-col-title::after{
+content:’’;flex:1;height:1px;background:var(–border-faint);max-width:40px;
+}
+
+.footer-offices{
+display:flex;flex-direction:column;gap:16px;
+}
+
+.office{display:flex;flex-direction:column;gap:2px}
+
+.office-city{
+font-size:.72rem;
+font-weight:500;
+color:var(–champagne);
+letter-spacing:.06em;
+}
+
+.office-detail{
+font-size:.68rem;
+font-weight:300;
+color:var(–muted);
+line-height:1.6;
+}
+
+.footer-services{
+display:flex;flex-direction:column;gap:10px;
+}
+
+.footer-link{
+font-size:.7rem;
+font-weight:300;
+color:var(–muted);
+text-decoration:none;
+display:flex;align-items:center;gap:6px;
+transition:color .3s;
+}
+.footer-link::before{
+content:’’;width:12px;height:1px;background:var(–dim);transition:background .3s,width .3s;
+}
+.footer-link:hover{color:var(–warm-gold)}
+.footer-link:hover::before{background:var(–warm-gold);width:18px}
+
+.footer-bottom{
+max-width:900px;margin:0 auto;
+display:flex;
+flex-direction:column;
+gap:8px;
+align-items:flex-start;
+}
+@media(min-width:640px){
+.footer-bottom{flex-direction:row;align-items:center;justify-content:space-between}
+}
+
+.footer-copy{
+font-size:.58rem;
+letter-spacing:.1em;
+color:var(–dim);
+}
+
+.footer-legal{
+display:flex;gap:20px;
+}
+.footer-legal a{
+font-size:.58rem;
+letter-spacing:.1em;
+color:var(–dim);
+text-decoration:none;
+transition:color .3s;
+}
+.footer-legal a:hover{color:var(–warm-gold)}
+
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+
+<nav>
+  <a class="nav-brand" href="#">
+[4/28/2026 12:01 AM] J. F. Carpio: <span class="nav-wordmark">Peroche</span>
+    <span class="nav-unit">Business Intelligence Unit</span>
+  </a>
+  <a class="nav-cta" href="#contact">Schedule a Brief</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="hero-eyebrow">
+    <span class="rule-h"></span>
+    <span class="label">Experience Economy Desk</span>
+  </div>
+
+  <h1 class="hero-title">
+    Intelligence for<br>
+    the <em>Experience</em><br>
+    Economy.
+  </h1>
+
+  <p class="hero-body">
+    Authoritative insights and strategic intelligence for leaders shaping the future of hospitality, tourism, and real estate across the Americas.
+  </p>
+
+  <div class="hero-actions">
+    <a class="btn-primary" href="#services">
+      <span>Explore Our Work</span>
+      <span class="arr">→</span>
+    </a>
+    <a class="btn-ghost" href="#contact">Request a Study</a>
+  </div>
+
+  <div class="scroll-cue">
+    <div class="line"></div>
+    <span class="txt">Scroll</span>
+  </div>
+</section>
+
+<!-- ─── CENEFA ─── -->
+
+<div class="cenefa-wrap">
+  <svg viewBox="0 0 1200 24" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 12 Q150 2 300 12 Q450 22 600 12 Q750 2 900 12 Q1050 22 1200 12" stroke="#C8A36B" stroke-width="1" fill="none"/>
+  </svg>
+</div>
+
+<!-- ─── POSITIONING ─── -->
+
+<div class="position-band">
+  <div class="position-inner">
+<div class="reveal">
+  <div class="hero-eyebrow" style="margin-bottom:20px;opacity:1;animation:none">
+    <span class="rule-h"></span>
+    <span class="label">Who We Are</span>
+  </div>
+  <h2 class="position-heading">
+    A boutique virtual office.<br>
+    <em>Rigorous by design.</em>
+  </h2>
+</div>
+
+<div class="reveal d1">
+  <p class="position-body">
+    Peroche Business Intelligence Unit delivers <strong>sector-specific intelligence</strong> to family offices, investment groups, and executive teams navigating the experience economy.<br><br>
+    From <strong>Quito to New York</strong>, our analysts produce the kind of precise, decision-ready insight that replaces guesswork with clarity.
+  </p>
+</div>
+
+  </div>
+</div>
+
+<!-- ─── SERVICES ─── -->
+
+<section class="services-section" id="services">
+
+  <div class="section-header reveal">
+    <span class="label">Our Services</span>
+    <div class="section-header-line"></div>
+  </div>
+
+  <div class="services-grid">
+<!-- Card 1 -->
+<div class="service-card reveal">
+  <div class="svc-num">01</div>
+  <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
+    <rect x="3" y="3" width="18" height="18" rx="1"/>
+    <path d="M7 16l3-4 3 3 3-5"/>
+  </svg>
+  <div class="svc-name">BI Reports</div>
+  <p class="svc-desc">Deep-dive sector briefs on hospitality, tourism, and alternative investments across the Americas. Delivered with rigorous methodology and executive precision.</p>
+  <div class="svc-tags">
+    <span class="svc-tag">Sector Briefs</span>
+    <span class="svc-tag">Annual Reports</span>
+    <span class="svc-tag">Market Entry</span>
+  </div>
+</div>
+
+<!-- Card 2 -->
+<div class="service-card reveal d1">
+  <div class="svc-num">02</div>
+  <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
+    <rect x="2" y="2" width="9" height="9" rx="1"/>
+    <rect x="13" y="2" width="9" height="9" rx="1"/>
+    <rect x="2" y="13" width="9" height="9" rx="1"/>
+    <path d="M13 17.5h9M17.5 13v9"/>
+  </svg>
+  <div class="svc-name">Dashboards</div>
+  <p class="svc-desc">Live and periodic performance dashboards — occupancy, RevPAR, ADR, market share — tailored to your portfolio and updated to your reporting cadence.</p>
+  <div class="svc-tags">
+    <span class="svc-tag">RevPAR</span>
+    <span class="svc-tag">Occupancy</span>
+    <span class="svc-tag">KPI Monitoring</span>
+  </div>
+</div>
+
+<!-- Card 3 -->
+<div class="service-card reveal d2">
+  <div class="svc-num">03</div>
+  <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
+    <circle cx="11" cy="11" r="7"/>
+[4/28/2026 12:01 AM] J. F. Carpio: <path d="M21 21l-4-4"/>
+    <path d="M8 11h6M11 8v6"/>
+  </svg>
+  <div class="svc-name">Ad Hoc Studies</div>
+  <p class="svc-desc">Custom research commissioned for a specific decision — site selection, feasibility, competitive positioning, or due diligence. Discreet. Decisive. Delivered on time.</p>
+  <div class="svc-tags">
+    <span class="svc-tag">Feasibility</span>
+    <span class="svc-tag">Due Diligence</span>
+    <span class="svc-tag">Site Analysis</span>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- ─── KPI STRIP ─── -->
+
+<div class="kpi-strip">
+  <div class="kpi-inner">
+<div class="kpi-item reveal">
+  <div class="kpi-value">11+</div>
+  <div class="kpi-label">Markets<br>Tracked</div>
+</div>
+
+<div class="kpi-item reveal d1">
+  <div class="kpi-value">ES / EN</div>
+  <div class="kpi-label">Bilingual<br>Delivery</div>
+</div>
+
+<div class="kpi-item reveal d2">
+  <div class="kpi-value">PDF</div>
+  <div class="kpi-label">Confidential<br>Format</div>
+</div>
+
+<div class="kpi-item reveal d3">
+  <div class="kpi-value">2</div>
+  <div class="kpi-label">Office<br>Locations</div>
+</div>
+
+  </div>
+</div>
+
+<!-- ─── CENEFA ─── -->
+
+<div class="cenefa-wrap">
+  <svg viewBox="0 0 1200 24" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 12 Q200 22 400 12 Q600 2 800 12 Q1000 22 1200 12" stroke="#C8A36B" stroke-width="1" fill="none"/>
+  </svg>
+</div>
+
+<!-- ─── TESTIMONIAL ─── -->
+
+<section style="padding:80px 24px" id="testimonial">
+  <div class="testimonial-section" style="padding:0">
+<div class="hero-eyebrow" style="opacity:1;animation:none;margin-bottom:32px" class="reveal">
+  <span class="rule-h"></span>
+  <span class="label">Client Recommendation</span>
+</div>
+
+<div class="testi-inner reveal">
+  <span class="testi-qqmark">"</span>
+  <p class="testi-quote">
+    I have known Carolina from her firefighter volunteering, her civil liberties activism, and her ability to <span class="highlight">command groups of multidisciplinary experts.</span>
+  </p>
+  <div class="testi-rule"></div>
+  <div class="testi-name">J. F. Carpio</div>
+  <div class="testi-role">Lecturer & Co-Founder — Economics Institute, USFQ</div>
+</div>
+
+  </div>
+</section>
+
+<!-- ─── BRAND VALUES ─── -->
+
+<div class="values-strip">
+  <div class="values-inner">
+<div class="value-item reveal">
+  <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
+    <path d="M12 2l3.5 6.5H21l-5 4.5 2 7L12 16l-6 4 2-7L3 8.5h5.5z"/>
+  </svg>
+  <div class="value-name">Authority</div>
+  <div class="value-desc">Rigorous analysis and trusted methodology.</div>
+</div>
+
+<div class="value-item reveal d1">
+  <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
+    <circle cx="12" cy="12" r="9"/>
+    <path d="M12 6v6l4 2"/>
+  </svg>
+  <div class="value-name">Clarity</div>
+  <div class="value-desc">Clear, structured and easy to act on.</div>
+</div>
+
+<div class="value-item reveal d2">
+  <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+  </svg>
+  <div class="value-name">Elegance</div>
+  <div class="value-desc">Timeless design that respects intelligence.</div>
+</div>
+
+<div class="value-item reveal d1">
+  <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
+    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+  </svg>
+  <div class="value-name">Impact</div>
+  <div class="value-desc">Insights that drive better decisions.</div>
+</div>
+
+<div class="value-item reveal d2">
+  <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
+    <rect x="3" y="11" width="18" height="11" rx="2"/>
+    <path d="M7 11V7a5 5 0 0110 0v4"/>
+  </svg>
+  <div class="value-name">Confidentiality</div>
+  <div class="value-desc">Discretion and security in everything we do.</div>
+</div>
+
+  </div>
+</div>
+
+<!-- ─── CTA BAND ─── -->
+
+<div class="cta-band" id="contact">
+[4/28/2026 12:01 AM] J. F. Carpio: <div class="cta-band-inner reveal">
+    <h2>Ready to make<br><em>intelligence your edge?</em></h2>
+    <p>Schedule a confidential consultation with our Experience Economy desk. New York · Quito · Guayaquil.</p>
+    <a class="btn-light" href="mailto:hello@peroche-strategies.com">
+      Request a Consultation →
+    </a>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+
+<footer>
+
+  <div class="footer-top">
+<div class="footer-brand">
+  <div class="footer-wordmark">Peroche</div>
+  <div class="footer-unit-label">Business Intelligence Unit</div>
+  <p class="footer-tagline">Intelligence. Strategy. Impact.<br>Experience Economy Desk — Americas.</p>
+</div>
+
+<div>
+  <div class="footer-col-title">Offices</div>
+  <div class="footer-offices">
+    <div class="office">
+      <div class="office-city">New York City</div>
+      <div class="office-detail">United States</div>
+    </div>
+    <div class="office">
+      <div class="office-city">Quito · Guayaquil</div>
+      <div class="office-detail">Ecuador</div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="footer-col-title">Services</div>
+  <div class="footer-services">
+    <a class="footer-link" href="#services">BI Reports</a>
+    <a class="footer-link" href="#services">Dashboards</a>
+    <a class="footer-link" href="#services">Ad Hoc Studies</a>
+    <a class="footer-link" href="#contact">Schedule a Brief</a>
+  </div>
+</div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Peroche Business Intelligence Unit. All rights reserved.</div>
+    <div class="footer-legal">
+      <a href="#">Privacy</a>
+      <a href="#">Confidentiality</a>
+      <a href="#">peroche-strategies.com</a>
+    </div>
+  </div>
+
+</footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
