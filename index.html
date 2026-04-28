@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Peroche Business Intelligence Unit</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="Peroche%20Business%20Intelligence%20Unit_files/css2.css" rel="stylesheet">
 <style>
 
 /* ─────────────────────────────────────────
@@ -750,6 +750,178 @@ footer{
 }
 .footer-legal a:hover{color:var(--warm-gold)}
 
+/* ─────────────────────────────────────────
+   FEATURED WORK SECTION
+───────────────────────────────────────── */
+.featured-section{
+  padding:80px 24px;
+}
+.featured-inner{
+  max-width:900px;margin:0 auto;
+}
+.featured-section-head{
+  margin-bottom:48px;
+}
+.featured-title{
+  font-family:var(--fd);
+  font-weight:400;
+  font-size:clamp(1.6rem,4.5vw,2.5rem);
+  line-height:1.2;
+  color:var(--off-white);
+  margin-top:16px;
+}
+.featured-title em{font-style:italic;color:var(--warm-gold)}
+
+/* Main large card */
+.fw-main{
+  position:relative;overflow:hidden;
+  border:1px solid var(--border);
+  margin-bottom:16px;
+  background:var(--charcoal);
+}
+.fw-main::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--warm-gold),transparent);
+  transform:scaleX(0);
+  transition:transform .55s ease;
+  z-index:4;
+}
+.fw-main:hover::before{transform:scaleX(1)}
+
+/* Image wrapper — fixed aspect ratio so cards hold height before images load */
+.fw-img-wrap{
+  position:relative;overflow:hidden;cursor:pointer;
+  aspect-ratio:16/9;
+  background:var(--charcoal);
+}
+.fw-img-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;display:block;
+  transition:transform .8s ease;
+}
+.fw-main:hover .fw-img-wrap img{transform:scale(1.025)}
+
+.fw-overlay{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,#0B0B0D 0%,#0B0B0D80 50%,transparent 100%);
+  padding:36px 32px 28px;
+}
+.fw-badge{
+  font-size:.52rem;
+  font-weight:600;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--warm-gold);
+  margin-bottom:8px;
+  display:flex;align-items:center;gap:8px;
+}
+.fw-badge::before{
+  content:'';width:16px;height:1px;background:var(--warm-gold);
+}
+.fw-cap-title{
+  font-family:var(--fd);
+  font-size:clamp(.95rem,2.2vw,1.3rem);
+  color:var(--off-white);
+  line-height:1.3;
+  margin-bottom:4px;
+}
+.fw-cap-sub{
+  font-size:.72rem;
+  font-weight:400;
+  color:var(--champagne);
+  line-height:1.6;
+}
+.fw-meta{
+  display:flex;flex-wrap:wrap;gap:6px;
+  padding:14px 28px 16px;
+  border-top:1px solid var(--border-faint);
+  background:var(--charcoal);
+}
+.fw-tag{
+  font-size:.52rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--warm-gold);
+  border:1px solid rgba(200,163,107,.22);
+  padding:4px 9px;
+  font-weight:500;
+}
+
+/* Duo row */
+.fw-duo{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+@media(min-width:600px){
+  .fw-duo{grid-template-columns:1fr 1fr}
+}
+
+.fw-card{
+  position:relative;overflow:hidden;
+  border:1px solid var(--border-faint);
+  background:var(--charcoal);
+  transition:border-color .4s ease;
+}
+.fw-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--warm-gold),transparent);
+  transform:scaleX(0);
+  transition:transform .55s ease;
+  z-index:4;
+}
+.fw-card:hover::before{transform:scaleX(1)}
+.fw-card:hover{border-color:var(--border)}
+.fw-card .fw-img-wrap img{transition:transform .8s ease}
+.fw-card:hover .fw-img-wrap img{transform:scale(1.03)}
+.fw-card .fw-overlay{
+  background:linear-gradient(to top,#0B0B0D 0%,#0B0B0D70 45%,transparent 100%);
+  padding:28px 24px 20px;
+}
+
+/* ─────────────────────────────────────────
+   TESTIMONIAL IMAGE CARD
+───────────────────────────────────────── */
+.testi-screenshot-wrap{
+  max-width:760px;margin:0 auto 40px;
+  position:relative;
+  border:1px solid var(--border);
+  overflow:hidden;
+  background:var(--charcoal);
+}
+.testi-screenshot-wrap::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,transparent,var(--ember),var(--warm-gold),transparent);
+  z-index:2;
+}
+.testi-screenshot-wrap img{
+  width:100%;display:block;
+}
+.testi-screenshot-caption{
+  padding:14px 20px;
+  display:flex;align-items:center;gap:10px;
+  border-top:1px solid var(--border-faint);
+}
+.testi-screenshot-caption .dot{
+  width:6px;height:6px;
+  background:var(--ember);
+  border-radius:50%;
+  animation:pulse 2s ease-in-out infinite;
+}
+.testi-screenshot-caption span{
+  font-size:.58rem;
+  font-weight:500;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--champagne);
+}
+
 </style>
 </head>
 <body>
@@ -760,7 +932,10 @@ footer{
     <span class="nav-wordmark">Peroche</span>
     <span class="nav-unit">Business Intelligence Unit</span>
   </a>
-  <a class="nav-cta" href="#contact">Schedule a Brief</a>
+  <div style="display:flex;align-items:center;gap:20px">
+    <a class="btn-ghost" href="#work" style="font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--champagne);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;transition:color .3s,border-color .3s">Our Work</a>
+    <a class="nav-cta" href="#contact">Schedule a Brief</a>
+  </div>
 </nav>
 
 <!-- ─── HERO ─── -->
@@ -780,7 +955,9 @@ footer{
   </h1>
 
   <p class="hero-body">
-    Authoritative insights and strategic intelligence for leaders shaping the future of hospitality, tourism, and real estate across the Americas.
+    Authoritative insights and strategic intelligence for leaders 
+shaping the future of hospitality, tourism, and real estate across the 
+Americas.
   </p>
 
   <div class="hero-actions">
@@ -800,7 +977,7 @@ footer{
 <!-- ─── CENEFA ─── -->
 <div class="cenefa-wrap">
   <svg viewBox="0 0 1200 24" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 12 Q150 2 300 12 Q450 22 600 12 Q750 2 900 12 Q1050 22 1200 12" stroke="#C8A36B" stroke-width="1" fill="none"/>
+    <path d="M0 12 Q150 2 300 12 Q450 22 600 12 Q750 2 900 12 Q1050 22 1200 12" stroke="#C8A36B" stroke-width="1" fill="none"></path>
   </svg>
 </div>
 
@@ -843,11 +1020,13 @@ footer{
     <div class="service-card reveal">
       <div class="svc-num">01</div>
       <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
-        <rect x="3" y="3" width="18" height="18" rx="1"/>
-        <path d="M7 16l3-4 3 3 3-5"/>
+        <rect x="3" y="3" width="18" height="18" rx="1"></rect>
+        <path d="M7 16l3-4 3 3 3-5"></path>
       </svg>
       <div class="svc-name">BI Reports</div>
-      <p class="svc-desc">Deep-dive sector briefs on hospitality, tourism, and alternative investments across the Americas. Delivered with rigorous methodology and executive precision.</p>
+      <p class="svc-desc">Deep-dive sector briefs on hospitality, 
+tourism, and alternative investments across the Americas. Delivered with
+ rigorous methodology and executive precision.</p>
       <div class="svc-tags">
         <span class="svc-tag">Sector Briefs</span>
         <span class="svc-tag">Annual Reports</span>
@@ -859,13 +1038,15 @@ footer{
     <div class="service-card reveal d1">
       <div class="svc-num">02</div>
       <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
-        <rect x="2" y="2" width="9" height="9" rx="1"/>
-        <rect x="13" y="2" width="9" height="9" rx="1"/>
-        <rect x="2" y="13" width="9" height="9" rx="1"/>
-        <path d="M13 17.5h9M17.5 13v9"/>
+        <rect x="2" y="2" width="9" height="9" rx="1"></rect>
+        <rect x="13" y="2" width="9" height="9" rx="1"></rect>
+        <rect x="2" y="13" width="9" height="9" rx="1"></rect>
+        <path d="M13 17.5h9M17.5 13v9"></path>
       </svg>
       <div class="svc-name">Dashboards</div>
-      <p class="svc-desc">Live and periodic performance dashboards — occupancy, RevPAR, ADR, market share — tailored to your portfolio and updated to your reporting cadence.</p>
+      <p class="svc-desc">Live and periodic performance dashboards — 
+occupancy, RevPAR, ADR, market share — tailored to your portfolio and 
+updated to your reporting cadence.</p>
       <div class="svc-tags">
         <span class="svc-tag">RevPAR</span>
         <span class="svc-tag">Occupancy</span>
@@ -877,12 +1058,14 @@ footer{
     <div class="service-card reveal d2">
       <div class="svc-num">03</div>
       <svg class="svc-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
-        <circle cx="11" cy="11" r="7"/>
-        <path d="M21 21l-4-4"/>
-        <path d="M8 11h6M11 8v6"/>
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="M21 21l-4-4"></path>
+        <path d="M8 11h6M11 8v6"></path>
       </svg>
       <div class="svc-name">Ad Hoc Studies</div>
-      <p class="svc-desc">Custom research commissioned for a specific decision — site selection, feasibility, competitive positioning, or due diligence. Discreet. Decisive. Delivered on time.</p>
+      <p class="svc-desc">Custom research commissioned for a specific 
+decision — site selection, feasibility, competitive positioning, or due 
+diligence. Discreet. Decisive. Delivered on time.</p>
       <div class="svc-tags">
         <span class="svc-tag">Feasibility</span>
         <span class="svc-tag">Due Diligence</span>
@@ -892,6 +1075,88 @@ footer{
 
   </div>
 </section>
+
+<!-- ─── FEATURED WORK ─── -->
+<section class="featured-section" id="work">
+  <div class="featured-inner">
+
+    <div class="featured-section-head reveal">
+      <div class="hero-eyebrow" style="opacity:1;animation:none;margin-bottom:16px">
+        <span class="rule-h"></span>
+        <span class="label">Selected Work</span>
+      </div>
+      <h2 class="featured-title">A window into<br><em>our intelligence.</em></h2>
+    </div>
+
+    <!-- Main: Dashboard sample -->
+    <div class="fw-main reveal">
+      <div class="fw-img-wrap">
+        <img src="https://jfcarpiopuntocom.github.io/carolina_aguayo/peroche-dashboard.jpg"
+             alt="Occupancy & RevPAR BI Dashboard — Costa Esmeralda Resort Group">
+        <div class="fw-overlay">
+          <div class="fw-badge">Live Dashboard</div>
+          <div class="fw-cap-title">Occupancy &amp; RevPAR Dashboard — Six-Property Portfolio</div>
+          <div class="fw-cap-sub">LatAm hospitality portfolio — 3-week delivery, bilingual ES / EN.</div>
+        </div>
+      </div>
+      <div class="fw-meta">
+        <span class="fw-tag">Data Visualization</span>
+        <span class="fw-tag">RevPAR · ADR · Occupancy</span>
+        <span class="fw-tag">KPI Monitoring</span>
+        <span class="fw-tag">ES / EN</span>
+        <span class="fw-tag">3-Week Delivery</span>
+      </div>
+    </div>
+
+    <!-- Duo: Report + Testimonial -->
+    <div class="fw-duo">
+
+      <!-- BI Report Teaser -->
+      <div class="fw-card reveal">
+        <div class="fw-img-wrap">
+          <img src="https://jfcarpiopuntocom.github.io/carolina_aguayo/peroche-report.jpg"
+               alt="The Experience Economy Report 2026–2027 — Annual Sector Brief">
+          <div class="fw-overlay">
+            <div class="fw-badge">BI Report · Sample</div>
+            <div class="fw-cap-title">The Experience Economy Report 2026–2027</div>
+            <div class="fw-cap-sub">42 pages · 11 markets · PDF · ES / EN.</div>
+          </div>
+        </div>
+        <div class="fw-meta">
+          <span class="fw-tag">42 Pages</span>
+          <span class="fw-tag">11 Markets</span>
+          <span class="fw-tag">Confidential PDF</span>
+        </div>
+      </div>
+
+      <!-- Testimonial card -->
+      <div class="fw-card reveal d1">
+        <div class="fw-img-wrap">
+          <img src="https://jfcarpiopuntocom.github.io/carolina_aguayo/peroche-testimonial.jpg"
+               alt="Client Recommendation — J.F. Carpio, Economics Institute, USFQ">
+          <div class="fw-overlay">
+            <div class="fw-badge">Client Recommendation</div>
+            <div class="fw-cap-title">"…her ability to command groups of multidisciplinary experts."</div>
+            <div class="fw-cap-sub">— J. F. Carpio · Lecturer &amp; Co-Founder, Economics Institute, USFQ</div>
+          </div>
+        </div>
+        <div class="fw-meta">
+          <span class="fw-tag">Verified Testimonial</span>
+          <span class="fw-tag">USFQ</span>
+        </div>
+      </div>
+
+    </div><!-- /fw-duo -->
+
+  </div>
+</section>
+
+<!-- ─── CENEFA ─── -->
+<div class="cenefa-wrap">
+  <svg viewBox="0 0 1200 24" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 12 Q150 2 300 12 Q450 22 600 12 Q750 2 900 12 Q1050 22 1200 12" stroke="#C8A36B" stroke-width="1" fill="none"></path>
+  </svg>
+</div>
 
 <!-- ─── KPI STRIP ─── -->
 <div class="kpi-strip">
@@ -923,7 +1188,7 @@ footer{
 <!-- ─── CENEFA ─── -->
 <div class="cenefa-wrap">
   <svg viewBox="0 0 1200 24" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M0 12 Q200 22 400 12 Q600 2 800 12 Q1000 22 1200 12" stroke="#C8A36B" stroke-width="1" fill="none"/>
+    <path d="M0 12 Q200 22 400 12 Q600 2 800 12 Q1000 22 1200 12" stroke="#C8A36B" stroke-width="1" fill="none"></path>
   </svg>
 </div>
 
@@ -931,19 +1196,30 @@ footer{
 <section style="padding:80px 24px" id="testimonial">
   <div class="testimonial-section" style="padding:0">
 
-    <div class="hero-eyebrow" style="opacity:1;animation:none;margin-bottom:32px" class="reveal">
+    <div class="hero-eyebrow" style="opacity:1;animation:none;margin-bottom:32px">
       <span class="rule-h"></span>
       <span class="label">Client Recommendation</span>
     </div>
 
-    <div class="testi-inner reveal">
+    <!-- Image card -->
+    <div class="testi-screenshot-wrap reveal">
+      <img src="https://jfcarpiopuntocom.github.io/carolina_aguayo/peroche-testimonial.jpg"
+           alt="Client recommendation from J.F. Carpio — Peroche Business Intelligence">
+      <div class="testi-screenshot-caption">
+        <span class="dot"></span>
+        <span>Verified · Live Recommendation · January 2026</span>
+      </div>
+    </div>
+
+    <!-- Text version -->
+    <div class="testi-inner reveal d1">
       <span class="testi-qqmark">"</span>
       <p class="testi-quote">
         I have known Carolina from her firefighter volunteering, her civil liberties activism, and her ability to <span class="highlight">command groups of multidisciplinary experts.</span>
       </p>
       <div class="testi-rule"></div>
       <div class="testi-name">J. F. Carpio</div>
-      <div class="testi-role">Lecturer & Co-Founder — Economics Institute, USFQ</div>
+      <div class="testi-role">Lecturer &amp; Co-Founder — Economics Institute, USFQ</div>
     </div>
 
   </div>
@@ -955,7 +1231,7 @@ footer{
 
     <div class="value-item reveal">
       <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
-        <path d="M12 2l3.5 6.5H21l-5 4.5 2 7L12 16l-6 4 2-7L3 8.5h5.5z"/>
+        <path d="M12 2l3.5 6.5H21l-5 4.5 2 7L12 16l-6 4 2-7L3 8.5h5.5z"></path>
       </svg>
       <div class="value-name">Authority</div>
       <div class="value-desc">Rigorous analysis and trusted methodology.</div>
@@ -963,8 +1239,8 @@ footer{
 
     <div class="value-item reveal d1">
       <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
-        <circle cx="12" cy="12" r="9"/>
-        <path d="M12 6v6l4 2"/>
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 6v6l4 2"></path>
       </svg>
       <div class="value-name">Clarity</div>
       <div class="value-desc">Clear, structured and easy to act on.</div>
@@ -972,7 +1248,7 @@ footer{
 
     <div class="value-item reveal d2">
       <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
       </svg>
       <div class="value-name">Elegance</div>
       <div class="value-desc">Timeless design that respects intelligence.</div>
@@ -980,7 +1256,7 @@ footer{
 
     <div class="value-item reveal d1">
       <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
-        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
       </svg>
       <div class="value-name">Impact</div>
       <div class="value-desc">Insights that drive better decisions.</div>
@@ -988,8 +1264,8 @@ footer{
 
     <div class="value-item reveal d2">
       <svg class="value-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25">
-        <rect x="3" y="11" width="18" height="11" rx="2"/>
-        <path d="M7 11V7a5 5 0 0110 0v4"/>
+        <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+        <path d="M7 11V7a5 5 0 0110 0v4"></path>
       </svg>
       <div class="value-name">Confidentiality</div>
       <div class="value-desc">Discretion and security in everything we do.</div>
@@ -1064,8 +1340,40 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.10 });
 reveals.forEach(el => io.observe(el));
+
+// Subtle parallax tilt on featured cards (desktop only)
+if (window.matchMedia('(min-width: 640px) and (hover: hover)').matches) {
+  document.querySelectorAll('.fw-main, .fw-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top)  / r.height - 0.5;
+      card.style.transform = `perspective(800px) rotateY(${x * 2.5}deg) rotateX(${-y * 2}deg)`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(800px) rotateY(0deg) rotateX(0deg)';
+      card.style.transition = 'transform .5s ease';
+    });
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'transform .08s linear';
+    });
+  });
+}
+
+// Nav ghost hover fix
+document.querySelectorAll('.btn-ghost').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    el.style.color = 'var(--warm-gold)';
+    el.style.borderColor = 'var(--warm-gold)';
+  });
+  el.addEventListener('mouseleave', () => {
+    el.style.color = '';
+    el.style.borderColor = '';
+  });
+});
 </script>
-</body>
-</html>
+
+
+</body></html>
