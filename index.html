@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Peroche Business Intelligence Unit</title>
+<link rel="icon" type="image/jpeg" href="https://jfcarpiopuntocom.github.io/carolina_aguayo/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
 <link href="Peroche%20Business%20Intelligence%20Unit_files/css2.css" rel="stylesheet">
@@ -115,7 +116,7 @@ nav{
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
 }
 
-.nav-brand{text-decoration:none;display:flex;flex-direction:column;gap:2px}
+.nav-brand{text-decoration:none;display:flex;flex-direction:row;align-items:center;gap:10px}
 
 .nav-wordmark{
   font-family:var(--fd);
@@ -914,8 +915,12 @@ footer{
 <!-- ─── NAV ─── -->
 <nav>
   <a class="nav-brand" href="#">
-    <span class="nav-wordmark">Peroche</span>
-    <span class="nav-unit">Business Intelligence Unit</span>
+    <img src="https://jfcarpiopuntocom.github.io/carolina_aguayo/logo.jpg"
+         alt="Peroche" style="height:38px;width:38px;object-fit:cover;border-radius:50%;border:1px solid rgba(200,163,107,0.35);">
+    <span style="display:flex;flex-direction:column;gap:2px">
+      <span class="nav-wordmark">Peroche</span>
+      <span class="nav-unit">Business Intelligence Unit</span>
+    </span>
   </a>
   <div style="display:flex;align-items:center;gap:20px">
     <a class="btn-ghost" href="#work" style="font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--champagne);text-decoration:none;border-bottom:1px solid var(--border);padding-bottom:2px;transition:color .3s,border-color .3s">Our Work</a>
