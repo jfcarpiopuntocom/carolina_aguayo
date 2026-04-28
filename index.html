@@ -790,9 +790,9 @@ footer{
 }
 .fw-main:hover::before{transform:scaleX(1)}
 
-/* Image wrapper — fixed aspect ratio so cards hold height before images load */
+/* Image wrapper — fixed aspect ratio */
 .fw-img-wrap{
-  position:relative;overflow:hidden;cursor:pointer;
+  position:relative;overflow:hidden;
   aspect-ratio:16/9;
   background:var(--charcoal);
 }
@@ -803,40 +803,28 @@ footer{
 }
 .fw-main:hover .fw-img-wrap img{transform:scale(1.025)}
 
-.fw-overlay{
-  position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(to top,#0B0B0D 0%,#0B0B0D80 50%,transparent 100%);
-  padding:36px 32px 28px;
-}
-.fw-badge{
-  font-size:.52rem;
-  font-weight:600;
-  letter-spacing:.32em;
-  text-transform:uppercase;
-  color:var(--warm-gold);
-  margin-bottom:8px;
-  display:flex;align-items:center;gap:8px;
-}
-.fw-badge::before{
-  content:'';width:16px;height:1px;background:var(--warm-gold);
+/* Caption sits below the image, never on it */
+.fw-caption{
+  padding:18px 28px 14px;
+  border-top:1px solid var(--border-faint);
+  background:var(--charcoal);
 }
 .fw-cap-title{
   font-family:var(--fd);
-  font-size:clamp(.95rem,2.2vw,1.3rem);
+  font-size:clamp(.9rem,1.8vw,1.05rem);
   color:var(--off-white);
   line-height:1.3;
-  margin-bottom:4px;
+  margin-bottom:3px;
 }
 .fw-cap-sub{
   font-size:.72rem;
   font-weight:400;
   color:var(--champagne);
-  line-height:1.6;
+  line-height:1.5;
 }
 .fw-meta{
   display:flex;flex-wrap:wrap;gap:6px;
-  padding:14px 28px 16px;
-  border-top:1px solid var(--border-faint);
+  padding:10px 28px 16px;
   background:var(--charcoal);
 }
 .fw-tag{
@@ -860,10 +848,11 @@ footer{
 }
 
 .fw-card{
-  position:relative;overflow:hidden;
   border:1px solid var(--border-faint);
   background:var(--charcoal);
   transition:border-color .4s ease;
+  position:relative;
+  overflow:hidden;
 }
 .fw-card::before{
   content:'';
@@ -878,10 +867,6 @@ footer{
 .fw-card:hover{border-color:var(--border)}
 .fw-card .fw-img-wrap img{transition:transform .8s ease}
 .fw-card:hover .fw-img-wrap img{transform:scale(1.03)}
-.fw-card .fw-overlay{
-  background:linear-gradient(to top,#0B0B0D 0%,#0B0B0D70 45%,transparent 100%);
-  padding:28px 24px 20px;
-}
 
 /* ─────────────────────────────────────────
    TESTIMONIAL IMAGE CARD
@@ -1093,18 +1078,16 @@ diligence. Discreet. Decisive. Delivered on time.</p>
       <div class="fw-img-wrap">
         <img src="https://jfcarpiopuntocom.github.io/carolina_aguayo/peroche-dashboard.jpg"
              alt="Occupancy & RevPAR BI Dashboard — Costa Esmeralda Resort Group">
-        <div class="fw-overlay">
-          <div class="fw-badge">Live Dashboard</div>
-          <div class="fw-cap-title">Occupancy &amp; RevPAR Dashboard — Six-Property Portfolio</div>
-          <div class="fw-cap-sub">LatAm hospitality portfolio — 3-week delivery, bilingual ES / EN.</div>
-        </div>
+      </div>
+      <div class="fw-caption">
+        <div class="fw-cap-title">Occupancy &amp; RevPAR Dashboard — Six-Property Portfolio</div>
+        <div class="fw-cap-sub">LatAm hospitality group · 3-week delivery · ES / EN</div>
       </div>
       <div class="fw-meta">
         <span class="fw-tag">Data Visualization</span>
         <span class="fw-tag">RevPAR · ADR · Occupancy</span>
         <span class="fw-tag">KPI Monitoring</span>
         <span class="fw-tag">ES / EN</span>
-        <span class="fw-tag">3-Week Delivery</span>
       </div>
     </div>
 
@@ -1116,16 +1099,15 @@ diligence. Discreet. Decisive. Delivered on time.</p>
         <div class="fw-img-wrap">
           <img src="https://jfcarpiopuntocom.github.io/carolina_aguayo/peroche-report.jpg"
                alt="The Experience Economy Report 2026–2027 — Annual Sector Brief">
-          <div class="fw-overlay">
-            <div class="fw-badge">BI Report · Sample</div>
-            <div class="fw-cap-title">The Experience Economy Report 2026–2027</div>
-            <div class="fw-cap-sub">42 pages · 11 markets · PDF · ES / EN.</div>
-          </div>
+        </div>
+        <div class="fw-caption">
+          <div class="fw-cap-title">The Experience Economy Report 2026–2027</div>
+          <div class="fw-cap-sub">42 pages · 11 markets · PDF · ES / EN</div>
         </div>
         <div class="fw-meta">
-          <span class="fw-tag">42 Pages</span>
+          <span class="fw-tag">Annual Sector Brief</span>
           <span class="fw-tag">11 Markets</span>
-          <span class="fw-tag">Confidential PDF</span>
+          <span class="fw-tag">PDF</span>
         </div>
       </div>
 
@@ -1134,14 +1116,13 @@ diligence. Discreet. Decisive. Delivered on time.</p>
         <div class="fw-img-wrap">
           <img src="https://jfcarpiopuntocom.github.io/carolina_aguayo/peroche-testimonial.jpg"
                alt="Client Recommendation — J.F. Carpio, Economics Institute, USFQ">
-          <div class="fw-overlay">
-            <div class="fw-badge">Client Recommendation</div>
-            <div class="fw-cap-title">"…her ability to command groups of multidisciplinary experts."</div>
-            <div class="fw-cap-sub">— J. F. Carpio · Lecturer &amp; Co-Founder, Economics Institute, USFQ</div>
-          </div>
+        </div>
+        <div class="fw-caption">
+          <div class="fw-cap-title">J. F. Carpio — Economics Institute, USFQ</div>
+          <div class="fw-cap-sub">Lecturer &amp; Co-Founder · January 2026</div>
         </div>
         <div class="fw-meta">
-          <span class="fw-tag">Verified Testimonial</span>
+          <span class="fw-tag">Client Recommendation</span>
           <span class="fw-tag">USFQ</span>
         </div>
       </div>
